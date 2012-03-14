@@ -1,3 +1,6 @@
+JJT - I pulled this from an installed version of classifier so I could deploy changes to it.
+I couldn't get access to the actual original VC.
+
 == Welcome to Classifier
 
 Classifier is a general module to allow Bayesian and other types of classifications.
