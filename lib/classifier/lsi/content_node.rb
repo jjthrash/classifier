@@ -29,7 +29,17 @@ module Classifier
     def search_norm
       @lsi_norm || @raw_norm
     end
-   
+
+    def cls_sum(array, identity = 0, &block)
+      return identity unless array.size > 0
+
+      if block_given?
+        cls_sum(array.map(&block))
+      else
+        array.inject { |sum, element| sum + element }.to_f
+      end
+    end
+
     # Creates the raw vector out of word_hash using word_list as the
     # key for mapping the vector space.
     def raw_vector_with( word_list )
@@ -44,7 +54,7 @@ module Classifier
       end
      
       # Perform the scaling transform
-      total_words = vec.cls_sum
+      total_words = cls_sum(vec)
       
       # Perform first-order association transform if this vector has more
       # than one word in it. 
