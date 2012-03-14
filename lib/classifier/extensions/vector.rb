@@ -7,11 +7,11 @@ require 'matrix'
 require 'mathn'
 
 class Array
-  def sum(identity = 0, &block)
+  def cls_sum(identity = 0, &block)
     return identity unless size > 0
   
     if block_given?
-      map(&block).sum
+      map(&block).cls_sum
     else
       inject { |sum, element| sum + element }.to_f
     end
